@@ -25,8 +25,12 @@ items : Product[] = [];
     return this.items;
   }
 
-  getShippingPrices() {
+  getShippingTypes() {
     return this.http.get<{type: string, price: number}[]>('assets/shipping.json')
+  }
+
+  getTotal() {
+    return this.items.reduce((acc, item) => acc + item.price, 0);
   }
 
 }

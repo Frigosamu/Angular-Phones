@@ -18,6 +18,6 @@ export class ShippingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.shippingCosts = this.cartService.getShippingPrices();
+    this.shippingCosts = this.cartService.getShippingTypes();
   }
 }

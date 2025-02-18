@@ -1,12 +1,22 @@
 <h3>Cart</h3>
 
 <p>
-    <a routerLink="/shipping">Shipping Prices</a>
-  </p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
 
 <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
+</div>
+
+<div class="cart-prices">
+  <h4>Shipping type:
+    <select (change)="subtotal()" [(ngModel)]="selectedShippingCost">
+      <option disabled selected>Select shipping method</option>
+      <option *ngFor="let shipping of shippingOptions" [value]="shipping.price">{{ shipping.type }}: ${{ shipping.price }}</option>
+    </select>
+  </h4>
+  <h3>Subtotal: ${{ itemsTotal }}</h3>
 </div>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
